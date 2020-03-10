@@ -60,7 +60,7 @@ public class TeleopDrive extends LinearOpMode {
 
 
 
-        liftB.setPosition(0.9);
+        liftB.setPosition(0.8);
         liftF.setPosition(0.4);
         cF.setPosition(0.8);
         cB.setPosition(0.8);
