@@ -13,55 +13,65 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous(group = "drive")
 public class ServoTest extends LinearOpMode {
-    Servo rotateB;
+    Servo liftF;
     Servo liftB;
     Servo cB;
+    Servo cF;
+
 
 
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBNB drive = new SampleMecanumDriveBNB(hardwareMap);
 drive.setLocalizer(new MyStandardTrackingWheelLocalizer(hardwareMap));
-        rotateB= hardwareMap.get(Servo .class, "rotateb");
-        liftB= hardwareMap.get(Servo.class, "liftb");
+        liftF= hardwareMap.get(Servo .class, "lf");
+        liftB= hardwareMap.get(Servo.class, "lb");
         cB= hardwareMap.get(Servo.class, "cb");
+        cF= hardwareMap.get(Servo.class, "cf");
 //drive.setPoseEstimate(new Pose2d(-42.75,-53.5,Math.toRadians(90)));
 
 
 
-
-
-        liftB.setPosition(0.5);
-
-        rotateB.setPosition(0.1);
-
-        cB.setPosition(0.5);
+       // liftF.setPosition(0.1);
+        // liftB.setPosition(0.1);
+       //cF.setPosition (0.2);
+        cB.setPosition(0.1);
 
 
         waitForStart();
-liftB.setPosition(0.9);
-sleep(1000);
+
+        liftF.setPosition(0.9);
+        sleep(3000);
+
+        liftF.setPosition(0.1);
+        sleep(1000);
+
+
+
 
         liftB.setPosition(0.1);
         sleep(1000);
 
 
-       /* rotateB.setPosition(0.1);
+        cF.setPosition(0.9); // Closes/clamps the claw down
+        sleep(3000);
+
+        cF.setPosition(0.1); // Opens the claw by a hair
         sleep(1000);
 
-        rotateB.setPosition(0.5);
-        sleep(1000);
-
-        rotateB.setPosition(0.9);
-        sleep(1000);
+       cB.setPosition(0.9);
+        sleep(3000);
 
         cB.setPosition(0.1);
         sleep(1000);
 
-        cB.setPosition(0.9);
-        sleep(1000);
 
-        */
+
+
+
+
+
+
 
 
 
