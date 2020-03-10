@@ -26,9 +26,11 @@ public class TeleopDrive extends LinearOpMode {
 
 
 
-    private Servo rotateB;
-    private Servo liftB;
-    private Servo cB;
+    Servo liftF;
+    Servo liftB;
+    Servo cB;
+    Servo cF;
+
 
 
     private Servo clamp;
@@ -47,21 +49,36 @@ public class TeleopDrive extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        rotateB= hardwareMap.get(Servo .class, "rotateb");
-        liftB= hardwareMap.get(Servo.class, "liftb");
+
+
+        liftF= hardwareMap.get(Servo .class, "lf");
+        liftB= hardwareMap.get(Servo.class, "lb");
         cB= hardwareMap.get(Servo.class, "cb");
-
-
+        cF= hardwareMap.get(Servo.class, "cf");
 
         clamp =hardwareMap.get(Servo.class, "clamp");
+
+
+
+        liftB.setPosition(0.9);
+        liftF.setPosition(0.4);
+        cF.setPosition(0.8);
+        cB.setPosition(0.8);
+        clamp.setPosition(0.9);
+
+
+
 
         leftIntake= hardwareMap.get(DcMotor.class, "leftEncoder");
         rightIntake = hardwareMap.get(DcMotor.class, "rightEncoder");
         linearLift = hardwareMap.get(DcMotor.class, "rl");
-        linearExtend = hardwareMap.get(DcMotor.class, "ex");
+        linearExtend = hardwareMap.get(DcMotor.class, "frontEncoder");
 
         leftIntake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightIntake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        linearLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        linearExtend.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         BNO055IMU imu;
@@ -99,6 +116,8 @@ public class TeleopDrive extends LinearOpMode {
 
         waitForStart();
 
+        clamp.setPosition(0.9);
+
         while (!isStopRequested()) {
             Pose2d baseVel = new Pose2d(
                     -gamepad1.left_stick_y,
@@ -129,11 +148,11 @@ public class TeleopDrive extends LinearOpMode {
             lift = gamepad2.right_stick_y;
             intake = gamepad2.left_stick_y;
 
-              linearExtend.setPower(extend);
+              linearExtend.setPower(lift);
 
-            linearLift.setPower(lift);
+            linearLift.setPower(extend);
 
-            leftIntake.setPower(-intake);
+            leftIntake.setPower(intake);
             rightIntake.setPower(intake);
 
             if(gamepad2.x)
