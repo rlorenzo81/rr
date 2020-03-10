@@ -79,9 +79,7 @@ public class opencvSkystoneDetector extends LinearOpMode {
 
     OpenCvCamera phoneCam;
 
-    private Servo rotateB;
-    private Servo liftB;
-    private Servo cB;
+
 
 
 
@@ -104,9 +102,6 @@ public class opencvSkystoneDetector extends LinearOpMode {
         //width, height
         //width = height in this case, because camera is in portrait mode.
 
-       rotateB= hardwareMap.get(Servo.class, "rotateb");
-     liftB= hardwareMap.get(Servo.class, "liftb");
-        cB= hardwareMap.get(Servo.class, "cb");
 
 
 
