@@ -63,7 +63,7 @@ drive.setPoseEstimate(new Pose2d(-45,53.5,Math.toRadians(270)));
 
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(-41, 28, 0), Math.toRadians(180))
-                        .splineTo(new Pose2d(0, 31, 0))
+                        .splineTo(new Pose2d(0, 29, 0))
                         .splineTo(new Pose2d(44,25,0))
 
                         .build()
@@ -82,7 +82,7 @@ drive.setPoseEstimate(new Pose2d(-45,53.5,Math.toRadians(270)));
 
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(44, 25, Math.toRadians(180)))
-                        .splineTo(new Pose2d(0, 31, Math.toRadians(180)))
+                        .splineTo(new Pose2d(0, 29, Math.toRadians(180)))
                         .splineTo(new Pose2d(-53,28, Math.toRadians(180)))
 
                         .build()
@@ -100,9 +100,9 @@ drive.setPoseEstimate(new Pose2d(-45,53.5,Math.toRadians(270)));
 
 
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-41, 28, 0), Math.toRadians(180))
-                        .splineTo(new Pose2d(0, 31, 0))
-                        .splineTo(new Pose2d(44,25,0))
+                drive.trajectoryBuilder(new Pose2d(-53, 28, 0), Math.toRadians(180))
+                        .splineTo(new Pose2d(0, 29, 0))
+                        .splineTo(new Pose2d(44,20,0))
 
                         .build()
 
